@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemesh>
+    <!--默认情况下，        sitemesh 只对 HTTP 响应头中 Content-Type 为 text/html 的类型进行拦截和装饰，
+        我们可以添加更多的 mime 类型-->
+  <mime-type>text/html</mime-type>
+  
+  <!-- 对不同的路径，启用不同的装饰器 -->
+  <mapping path="/sys/login.do" decorator="/model_top.jsp"></mapping>
+  <mapping path="/client/logIn.do" decorator="/model_top.jsp"></mapping>
+  <mapping path="/client/sign*" decorator="/model_top.jsp"/>
+  <mapping path="/client/index.do" decorator="/model_index.jsp"/>
+  <mapping path="/*/index.do" decorator="/model_index.jsp"/>
+  <mapping path="/*/show.do" decorator="/model_index.jsp"/>
+  <mapping path="/manager/comment.do" decorator="/manager/model.jsp"/>
+  <mapping path="/manager/course.do" decorator="/manager/model.jsp"/>
+  <mapping path="/manager/user.do" decorator="/manager/model.jsp"/>
+  <mapping path="/manager/notice.do" decorator="/manager/model.jsp"/>
+  <!-- 排除，不进行装饰的路径 -->
+  <mapping path="/static/*" exclue="true"/>
+</sitemesh>	

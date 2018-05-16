@@ -1,0 +1,74 @@
+	
+    	.register-body{
+    		margin: 130px auto;
+    		text-align: center;
+    		position: relative;
+    	}
+    	.register-div{
+    		margin: 0px auto;
+    		border:0  none;
+    		background: #fff;
+			box-shadow: 0 2px 11px rgba(0, 0, 0, 0.27);
+			border-radius: 4px;
+			display: inline-block;
+			vertical-align: middle;
+			position: relative;
+			min-height: 400px;
+    	}
+    	
+    	
+h1.lean{
+	color:#7E7E7E;
+	text-align:center;
+	letter-spacing:-0.05em;
+	line-height:20px;
+	/*margin:30px 0px 10px;*/
+	margin-bottom:10px;
+}
+
+h1.lean:before,
+h1.lean:after{
+	content:"";
+	height:1px;
+	position:absolute;
+	top:47px;
+	width:35%;
+}
+
+h1.lean:after{
+	background:rgb(126,126,126);
+	background:-moz-linear-gradient(left,rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
+	background:-webkit-linear-gradient(left,rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
+	background:-moz-linear-gradient(left,rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
+	background:-ms-linear-gradient(left,rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
+	background:linear-gradient(left,rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
+	right:0px;
+}
+
+h1.lean:before{
+	background:rgb(126,126,126);
+	background:-moz-linear-gradient(right,rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
+	background:-webkit-linear-gradient(right,rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
+	background:-moz-linear-gradient(right,rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
+	background:-ms-linear-gradient(right,rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
+	background:linear-gradient(right,rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
+	left:0px;
+}
+    	h1.lean {
+    color: #7E7E7E;
+    text-align: center;
+    letter-spacing: -0.05em;
+    line-height: 20px;
+    margin: 30px 0px 10px;
+    margin-bottom: 10px;
+}h1, .h1 {
+    font-size: 33px;
+}h1, .h1, h2, .h2, h3, .h3 {
+    margin-top: 18px;
+    margin-bottom: 9px;
+}h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: #000;
+}

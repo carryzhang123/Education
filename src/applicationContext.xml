@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	 http://www.springframework.org/schema/beans/spring-beans-4.1.xsd 
+	 http://www.springframework.org/schema/tx 
+	 http://www.springframework.org/schema/tx/spring-tx.xsd
+	 http://www.springframework.org/schema/aop
+	 http://www.springframework.org/schema/aop/spring-aop.xsd
+	 "
+	>
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://127.0.0.1:3306/db_jiajiao"/>
+        <property name="username" value="root"/>
+        <property name="password" value="Halo951"/>
+    </bean>
+
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+ 	<bean id="transactionManager"
+        class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
+  	</bean>
+    <!-- 事务   -->
+    <tx:advice id="txadvice" transaction-manager="transactionManager">  
+        <tx:attributes>  
+            <tx:method name="save" propagation="REQUIRED" no-rollback-for="com.exception.MyRuntimeException"/>  
+            <tx:method name="save*" propagation="REQUIRED" no-rollback-for="com.exception.MyRuntimeException"/>  
+            <tx:method name="m*" propagation="REQUIRED" no-rollback-for="com.exception.MyRuntimeException"/>  
+            <tx:method name="up*" propagation="REQUIRED" no-rollback-for="com.exception.MyRuntimeException"/>  
+            <tx:method name="del*" propagation="REQUIRED"/>  
+            <tx:method name="findAll" propagation="REQUIRED"  read-only="true"/>  
+            
+            <tx:method name="*" propagation="REQUIRED" read-only="false"/> 
+        </tx:attributes>  
+    </tx:advice>  
+        
+    <aop:config>  
+        <aop:pointcut expression="execution(* org.jj.dao.*DAO.*(..))" id="daoMethod"/>  
+        <aop:advisor advice-ref="txadvice" pointcut-ref="daoMethod"/>  
+    </aop:config>
+    
+	<bean id="TabNoticeDAO" class="org.jj.dao.TabNoticeDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TabStuStudyCourseDAO" class="org.jj.dao.TabStuStudyCourseDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TabRoleDAO" class="org.jj.dao.TabRoleDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TabChinaCitysDAO" class="org.jj.dao.TabChinaCitysDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TabCourseDAO" class="org.jj.dao.TabCourseDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TabUserInfoDAO" class="org.jj.dao.TabUserInfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TabCommentDAO" class="org.jj.dao.TabCommentDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="userInfoServices" class="org.jj.services.impl.UserInfoServicesImpl">
+		<property name="chinaCitysDAO" ref="TabChinaCitysDAO"></property>
+		<property name="roleDAO" ref="TabRoleDAO"></property>
+		<property name="userInfoDAO" ref="TabUserInfoDAO"></property>
+	</bean>
+	<bean id="noticeServices" class="org.jj.services.impl.ClientNoticeServicesImpl">
+		<property name="noticeDAO" ref="TabNoticeDAO"></property>
+		<property name="userInfoDAO" ref="TabUserInfoDAO"></property>
+	</bean>
+	<bean id="courseServices" class="org.jj.services.impl.ClientCourseServicesImpl">
+		<property name="courseDAO" ref="TabCourseDAO"></property>
+	</bean>
+	<bean id="commentSerivces" class="org.jj.services.impl.ClientCommentSerivcesImpl">
+		<property name="commentDAO" ref="TabCommentDAO"></property>
+	</bean>
+	<bean id="clientUserAction" class="org.jj.action.ClientUserAction">
+		<property name="userInfoServices" ref="userInfoServices"></property>
+	</bean>
+	<bean id="clientIndexAction" class="org.jj.action.ClientIndexAction" >
+		<property name="noticeServices" ref="noticeServices"></property>
+	</bean>
+	<bean id="clientManagerAction" class="org.jj.action.ClientManagerAction">
+		<property name="userInfoServices" ref="userInfoServices"></property>
+	</bean>
+	<bean id="clientCourseAction" class="org.jj.action.ClientCourseAction">
+		<property name="courseServices" ref="courseServices"></property>
+	</bean>
+	<bean id="clientCommentAction" class="org.jj.action.ClientCommentAction">
+		<property name="commentSerivces" ref="commentSerivces"></property>
+	</bean>
+	<bean id="clientNoticeAction" class="org.jj.action.ClientNoticeAction" >
+		<property name="noticeServices" ref="noticeServices"></property>
+	</bean>
+</beans> 

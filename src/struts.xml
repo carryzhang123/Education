@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.action.extension" value="do,action"></constant>
+	
+	<package name="client" extends="struts-default" namespace="/">
+		<action name="city"  class="org.jj.action.ClientIndexAction" method="city">
+		</action>
+		<action name="sys/login" class="org.jj.action.ClientUserAction"  method="signIn">
+			<result name="signIn">/client/login2.jsp</result>
+		</action>
+	</package>
+	<package name="sys" extends="struts-default" namespace="/sys">
+		<action name="login" class="org.jj.action.ClientUserAction"  method="signIn">
+			<result name="signIn">/client/login.jsp</result>
+		</action>
+	</package>
+	<package name="course" extends="struts-default" namespace="/course">
+		<action name="index" class="org.jj.action.ClientIndexAction" method="index">
+			<result name="success">/course/index.jsp</result>
+		</action>
+	</package> 
+	
+	<package name="user" extends="struts-default" namespace="/client">
+		<action name="sign*" class="org.jj.action.ClientUserAction"  method="sign{1}">
+			<result name="signIn">/client/login.jsp</result>
+			<result name="signUp">/client/register.jsp</result>
+		</action>
+		
+		<action name="index" class="org.jj.action.ClientIndexAction" method="index">
+			<result name="success">/course/index.jsp</result>
+		</action>
+		<action name="logIn" class="org.jj.action.ClientUserAction" method="logIn">
+			<result name="login" type="redirectAction">index</result>
+			<result name="noLogin" type="chain">signIn</result>
+		</action>
+	</package>
+	<package name="my" extends="struts-default" namespace="/user">
+		<action name="*" class="org.jj.action.ClientUserAction" method="{1}">
+			<result name="success">/user/{1}.jsp</result>
+		</action>
+	</package>
+	<package name="list" extends="struts-default" namespace="/list">
+		<action name="user_list" class="org.jj.action.ClientUserAction" method="user_list"></action>
+		<action name="course_list" class="org.jj.action.ClientCourseAction" method="course_list"></action>
+		<action name="comment_list" class="org.jj.action.ClientCommentAction" method="comment_list"></action>
+		<action name="notice_list" class="org.jj.action.ClientNoticeAction" method="notice_list"></action>
+	</package>
+	<package name="manager" extends="struts-default" namespace="/manager">
+		<action name="pwd" class="org.jj.action.ClientUserAction" method="pwd">
+		</action>
+		<action name="*" class="org.jj.action.ClientManagerAction" method="{1}">
+			<result name="success">/manager/{1}.jsp</result>
+		</action>
+	</package>
+	<package name="notice" extends="struts-default" namespace="/notice">
+		<action name="show" class="org.jj.action.ClientNoticeAction" method="show">
+			<result name="success">/notice/show.jsp</result>
+		</action>
+		
+		<action name="publish" class="org.jj.action.ClientNoticeAction" method="publish"></action>
+		<action name="del" class="org.jj.action.ClientNoticeAction" method="del"></action>
+	</package>
+	
+</struts>    
