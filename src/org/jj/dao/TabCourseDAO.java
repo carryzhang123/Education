@@ -2,6 +2,7 @@ package org.jj.dao;
 
 import java.util.List;
 
+import com.alibaba.fastjson.JSONObject;
 import org.hibernate.LockOptions;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -120,12 +121,12 @@ public class TabCourseDAO {
 		return findByProperty(ADD_TIME, addTime);
 	}
 
-	public List findAll() {
+	public String findAllToJson() {
 		log.debug("finding all TabCourse instances");
 		try {
 			String queryString = "from TabCourse";
 			Query queryObject = getCurrentSession().createQuery(queryString);
-			return queryObject.list();
+			return JSONObject.toJSONString(queryObject.list());
 		} catch (RuntimeException re) {
 			log.error("find all failed", re);
 			throw re;

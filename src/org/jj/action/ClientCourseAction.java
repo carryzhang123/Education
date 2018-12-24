@@ -49,8 +49,8 @@ public class ClientCourseAction extends BaseAction{
 	 * response json data
 	 */
 	public void course_list(){
-		List<TabCourse> list=courseServices.list();
-		responseInfo(JSONObject.toJSONString(list));
+		String list_json=courseServices.list();
+		responseInfo(list_json);
 	}
 	
 	/**

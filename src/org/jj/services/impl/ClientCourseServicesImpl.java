@@ -18,9 +18,9 @@ public class ClientCourseServicesImpl implements ClientCourseServices {
 		this.courseDAO = courseDAO;
 	}
 
-	@SuppressWarnings("unchecked")
-	public List<TabCourse> list() {
-		return courseDAO.findAll();
+	@Override
+	public String list() {
+		return courseDAO.findAllToJson();
 	}
 
 }

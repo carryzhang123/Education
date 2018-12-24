@@ -1,7 +1,10 @@
-主要目录:
-首页   http://127.0.0.1:8080/education/course/index.do
-登录 http://127.0.0.1:8080/education/client/signIn.do
-注册 http://127.0.0.1:8080/education/client/signUp.do
+首页
+http://127.0.0.1:8080/education/course/index.do
+登录
+http://127.0.0.1:8080/education/client/signIn.do
+注册
+http://127.0.0.1:8080/education/client/signUp.do
 
-管理员登录 http://127.0.0.1:8080/education/sys/login.do 
+管理员登录
+http://127.0.0.1:8080/education/sys/login.do
 	

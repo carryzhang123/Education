@@ -112,7 +112,7 @@
 			<li><i class="layui-icon " style="color: #FF5722;">&#xe756;</i>&nbsp;推荐</li>
 		</ul>
 		<div class="layui-tab-content" style="height: 100px;">
-			<div class="layui-tab-item layui-show">11111111111111111111111
+			<div class="layui-tab-item layui-show">
 				<!-- 最新课程列表 -->
 				<table id="tab_course_list_new layui-col-md12" style="width: 100%;min-height: 100px;display:block;border:1px solid #000;"></table>
 			</div>

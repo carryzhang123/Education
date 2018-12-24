@@ -99,27 +99,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="fg-line">
 							    <input type="radio" name="sex" value="nan" title="男">
 								<input type="radio" name="sex" value="nv" title="女" checked>
-								<input type="radio" name="sex" value="" title="中性" disabled>
 						</div>
 					</div>
 					<!-- address city -->
-					<div class="input-group m-b-20">
-						<span class="input-group-addon"> <i class="layui-icon">&#xe715;</i>
-						</span>
-						<div class="fg-line ">
-							    <select class="select layui-col-md3" id="province" name="province" lay-ignore>
-									<option value="">选择我的城市</option>
-								</select>
-								
-								<select class="select layui-col-md3"  name="city" id="city" lay-ignore>
-									<option value="">选择城市</option>
-								</select>
-						
-								<select class="select layui-col-md3"  name="town" id="town" lay-ignore>
-									<option value="">选择区域</option>
-								</select>
-						</div>
-					</div>
+					<%--<div class="input-group m-b-20">--%>
+						<%--<span class="input-group-addon"> <i class="layui-icon">&#xe715;</i>--%>
+						<%--</span>--%>
+						<%--<div class="fg-line ">--%>
+							    <%--<select class="select layui-col-md3" id="province" name="province" lay-ignore>--%>
+									<%--<option value="">选择我的城市</option>--%>
+								<%--</select>--%>
+								<%----%>
+								<%--<select class="select layui-col-md3"  name="city" id="city" lay-ignore>--%>
+									<%--<option value="">选择城市</option>--%>
+								<%--</select>--%>
+						<%----%>
+								<%--<select class="select layui-col-md3"  name="town" id="town" lay-ignore>--%>
+									<%--<option value="">选择区域</option>--%>
+								<%--</select>--%>
+						<%--</div>--%>
+					<%--</div>--%>
   					<!-- address -->
   					<div class="input-group m-b-20">
 						<span class="input-group-addon"> <i class="layui-icon">&#xe65b;</i>
