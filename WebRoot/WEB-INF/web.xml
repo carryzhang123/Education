@@ -4,9 +4,9 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	version="3.1">
 
-	<display-name>jiajiao</display-name>
+	<display-name>education</display-name>
 
-	<description>索学家教中心管理系统</description>
+	<description>家教中心管理系统</description>
 
 	<session-config>
 		<session-timeout>30</session-timeout>
@@ -26,7 +26,7 @@
 	</listener>
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:applicationContext.xml</param-value>
+		<param-value>classpath:./applicationContext.xml</param-value>
 	</context-param>
 	
 	<!-- JSP布局框架 SiteMesh -->
