@@ -1,8 +1,8 @@
 package org.jj.services;
 
-import java.util.List;
-
 import org.jj.model.TabComment;
+
+import java.util.List;
 
 public interface ClientCommentSerivces {
 

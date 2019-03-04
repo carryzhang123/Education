@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="org.jj.model.TabComment" table="tab_comment" schema="education">
+        <id name="id" column="id"/>
+        <property name="comment" column="comment"/>
+        <property name="publishTime" column="publish_time"/>
+        <property name="publishUser" column="publish_user"/>
+        <property name="replyUser" column="reply_user"/>
+        <property name="isDel" column="is_del"/>
+    </class>
+</hibernate-mapping>

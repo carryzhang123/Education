@@ -1,61 +1,49 @@
 package org.jj.model;
 
-import java.util.HashSet;
-import java.util.Set;
+import javax.persistence.*;
+import java.util.Objects;
 
 /**
- * TabRole entity. @author MyEclipse Persistence Tools
- */
+ * @author ZhangHang
+ * @create 2018-12-26 10:55
+ **/
+@Entity
+@Table(name = "tab_role", schema = "education", catalog = "")
+public class TabRole {
+    private int id;
+    private String role;
 
-@SuppressWarnings("rawtypes")
-public class TabRole implements java.io.Serializable {
+    @Id
+    @Column(name = "id")
+    public int getId() {
+        return id;
+    }
 
-	// Fields
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -3955615629696832337L;
-	private Integer id;
-	private String role;
-	private Set tabUserInfos = new HashSet(0);
+    @Basic
+    @Column(name = "role")
+    public String getRole() {
+        return role;
+    }
 
-	// Constructors
+    public void setRole(String role) {
+        this.role = role;
+    }
 
-	/** default constructor */
-	public TabRole() {
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TabRole that = (TabRole) o;
+        return id == that.id &&
+                Objects.equals(role, that.role);
+    }
 
-	/** full constructor */
-	public TabRole(String role, Set tabUserInfos) {
-		this.role = role;
-		this.tabUserInfos = tabUserInfos;
-	}
-
-	// Property accessors
-
-	public Integer getId() {
-		return this.id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getRole() {
-		return this.role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
-
-	public Set getTabUserInfos() {
-		return this.tabUserInfos;
-	}
-
-	public void setTabUserInfos(Set tabUserInfos) {
-		this.tabUserInfos = tabUserInfos;
-	}
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, role);
+    }
 }

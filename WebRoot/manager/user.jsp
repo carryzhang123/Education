@@ -44,7 +44,7 @@
 				align : 'center'
 			},
 			{
-				field : 'tabRole.role',
+				field : 'role',
 				title : '身份',
 				align : 'center'
 			},
@@ -66,30 +66,11 @@
 				align : 'center'
 			},
 			{
-				field : 'tabChinaCitys.name',
-				title : '用户所在城市',
-				align : 'center'
-			},
-			{
-				field : 'userAddress',
-				title : '详细地址',
-				align : 'center'
-			},
-			{
-				field : 'tabCommentsForPublishUser.length',
-				title : '评论数',
-				align : 'center'
-			},
-			{
-				field : 'tabCommentsForReplyUser.length',
-				title : '留言',
-				align : 'center'
-			},{
 				title:'管理',
 				formatter : function(v, r, i) {
 						var idCode = "<input type='hidden' class='id_code' value='" + r.id + "'  />";
-						if(r.tabRole==undefined){return;}
-						switch(r.tabRole.id){
+						if(r.userRole==undefined){return;}
+						switch(r.userRole){
 							case 1:
 								return $(".gly").html() + idCode ;
 							case 2:
@@ -132,7 +113,7 @@
 	<div class="body-div">
 		<table class="user-tab"></table>
 	</div>
-	<div class="gly layui-hide">
+	<div class="gly layui-hide" style="width: 100%;align-content: center">
 		<div class="layui-btn-group">
 			<button class="layui-btn btn-pwd">修改密码</button>
 		</div>

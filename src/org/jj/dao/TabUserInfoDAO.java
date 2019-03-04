@@ -23,7 +23,6 @@ import com.alibaba.fastjson.JSONObject;
  * transactions. Each of these methods provides additional information for how
  * to configure it for the desired type of transaction control.
  * 
- * @see org.jj.dao.TabUserInfo
  * @author MyEclipse Persistence Tools
  */
 @SuppressWarnings("rawtypes")
@@ -168,6 +167,17 @@ public class TabUserInfoDAO {
 		try {
 			String queryString = "from TabUserInfo";
 			Query queryObject = getCurrentSession().createQuery(queryString);
+			for(Object info:queryObject.list()){
+				TabUserInfo tabUserInfo= (TabUserInfo) info;
+				if(tabUserInfo.getUserRole()==1){
+					tabUserInfo.setRole("管理员");
+				}else if(tabUserInfo.getUserRole()==2){
+					tabUserInfo.setRole("教员");
+				}else if(tabUserInfo.getUserRole()==3){
+					tabUserInfo.setRole("学员");
+				}
+			}
+
 			return JSONObject.toJSONString(queryObject.list());
 		} catch (RuntimeException re) {
 			re.printStackTrace();

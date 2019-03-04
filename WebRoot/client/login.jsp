@@ -22,7 +22,7 @@ $(function(){
 <body class="">
 	<div class="center-login">
 		<div class="lc-block toggled login-body">
-			<form action="./client/logIn.do" method="post" class="">
+			<form action="./client/signIn.do" method="post" class="">
 				<h1 class="lean">用户登录</h1>
 				<div class="input-group m-b-20">
 					<span class="input-group-addon"> <i

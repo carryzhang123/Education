@@ -12,24 +12,25 @@
 	<property name="dialect">
 		org.hibernate.dialect.MySQLDialect
 	</property>
-	<property name="connection.password">123456</property>
-	<property name="connection.username">root</property>
-	<property name="connection.url">
-		jdbc:mysql://127.0.0.1:3306/education
-	</property>
-	<property name="connection.driver_class">
-		com.mysql.jdbc.Driver
-	</property>
+	<property name="connection.url">jdbc:mysql://localhost:3306/education</property>
+	<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
 	<property name="show_sql">true</property>
 	<property name="format_sql">true</property>
 
-	<mapping resource="./mapper/TabNotice.hbm.xml" />
-	<mapping resource="./mapper/TabStuStudyCourse.hbm.xml" />
-	<mapping resource="./mapper/TabCourse.hbm.xml" />
-	<mapping resource="./mapper/TabUserInfo.hbm.xml" />
-	<mapping resource="./mapper/TabChinaCitys.hbm.xml" />
-	<mapping resource="./mapper/TabRole.hbm.xml" />
-	<mapping resource="./mapper/TabComment.hbm.xml" />
+	<mapping class="org.jj.model.TabComment"/>
+	<mapping resource="org/jj/model/TabCommentEntity.hbm.xml"/>
+	<mapping class="org.jj.model.TabCourse"/>
+	<mapping resource="org/jj/model/TabCourseEntity.hbm.xml"/>
+	<mapping class="org.jj.model.TabNotice"/>
+	<mapping resource="org/jj/model/TabNoticeEntity.hbm.xml"/>
+	<mapping class="org.jj.model.TabRole"/>
+	<mapping resource="org/jj/model/TabRoleEntity.hbm.xml"/>
+	<mapping class="org.jj.model.TabStuStudyCourse"/>
+	<mapping resource="org/jj/model/TabStuStudyCourseEntity.hbm.xml"/>
+	<mapping class="org.jj.model.TabTeachCourse"/>
+	<mapping resource="org/jj/model/TabTeachCourseEntity.hbm.xml"/>
+	<mapping class="org.jj.model.TabUserInfo"/>
+	<mapping resource="org/jj/model/TabUserInfoEntity.hbm.xml"/>
 </session-factory>
 
 </hibernate-configuration>

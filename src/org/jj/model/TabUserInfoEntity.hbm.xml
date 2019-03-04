@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="org.jj.model.TabUserInfo" table="tab_user_info" schema="education">
+        <id name="id" column="id"/>
+        <property name="userId" column="user_id"/>
+        <property name="userPassword" column="user_password"/>
+        <property name="userName" column="user_name"/>
+        <property name="userSex" column="user_sex"/>
+        <property name="userAge" column="user_age"/>
+        <property name="userRole" column="user_role"/>
+        <property name="userResumeFile" column="user_resume_file"/>
+        <property name="userIsExamine" column="user_is_examine"/>
+        <property name="userResumeIsShow" column="user_resume_is_show"/>
+    </class>
+</hibernate-mapping>

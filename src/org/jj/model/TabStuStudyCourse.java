@@ -1,94 +1,97 @@
 package org.jj.model;
 
+import javax.persistence.*;
+import java.util.Objects;
+
 /**
- * TabStuStudyCourse entity. @author MyEclipse Persistence Tools
- */
+ * @author ZhangHang
+ * @create 2018-12-26 10:55
+ **/
+@Entity
+@Table(name = "tab_stu_study_course", schema = "education", catalog = "")
+public class TabStuStudyCourse {
+    private int id;
+    private int studentUserId;
+    private int courseId;
+    private String note;
+    private String publishTime;
+    private Integer teachUserId;
 
-public class TabStuStudyCourse implements java.io.Serializable {
+    @Id
+    @Column(name = "id")
+    public int getId() {
+        return id;
+    }
 
-	// Fields
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 8568947102117715558L;
-	private Integer id;
-	private TabUserInfo tabUserInfoByTeachUserId;
-	private TabUserInfo tabUserInfoByStudentUserId;
-	private Integer courseId;
-	private String note;
-	private String publishTime;
+    @Basic
+    @Column(name = "student_user_id")
+    public int getStudentUserId() {
+        return studentUserId;
+    }
 
-	// Constructors
+    public void setStudentUserId(int studentUserId) {
+        this.studentUserId = studentUserId;
+    }
 
-	/** default constructor */
-	public TabStuStudyCourse() {
-	}
+    @Basic
+    @Column(name = "course_id")
+    public int getCourseId() {
+        return courseId;
+    }
 
-	/** minimal constructor */
-	public TabStuStudyCourse(TabUserInfo tabUserInfoByStudentUserId, Integer courseId) {
-		this.tabUserInfoByStudentUserId = tabUserInfoByStudentUserId;
-		this.courseId = courseId;
-	}
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
+    }
 
-	/** full constructor */
-	public TabStuStudyCourse(TabUserInfo tabUserInfoByTeachUserId, TabUserInfo tabUserInfoByStudentUserId,
-			Integer courseId, String note, String publishTime) {
-		this.tabUserInfoByTeachUserId = tabUserInfoByTeachUserId;
-		this.tabUserInfoByStudentUserId = tabUserInfoByStudentUserId;
-		this.courseId = courseId;
-		this.note = note;
-		this.publishTime = publishTime;
-	}
+    @Basic
+    @Column(name = "note")
+    public String getNote() {
+        return note;
+    }
 
-	// Property accessors
+    public void setNote(String note) {
+        this.note = note;
+    }
 
-	public Integer getId() {
-		return this.id;
-	}
+    @Basic
+    @Column(name = "publish_time")
+    public String getPublishTime() {
+        return publishTime;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public void setPublishTime(String publishTime) {
+        this.publishTime = publishTime;
+    }
 
-	public TabUserInfo getTabUserInfoByTeachUserId() {
-		return this.tabUserInfoByTeachUserId;
-	}
+    @Basic
+    @Column(name = "teach_user_id")
+    public Integer getTeachUserId() {
+        return teachUserId;
+    }
 
-	public void setTabUserInfoByTeachUserId(TabUserInfo tabUserInfoByTeachUserId) {
-		this.tabUserInfoByTeachUserId = tabUserInfoByTeachUserId;
-	}
+    public void setTeachUserId(Integer teachUserId) {
+        this.teachUserId = teachUserId;
+    }
 
-	public TabUserInfo getTabUserInfoByStudentUserId() {
-		return this.tabUserInfoByStudentUserId;
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TabStuStudyCourse that = (TabStuStudyCourse) o;
+        return id == that.id &&
+                studentUserId == that.studentUserId &&
+                courseId == that.courseId &&
+                Objects.equals(note, that.note) &&
+                Objects.equals(publishTime, that.publishTime) &&
+                Objects.equals(teachUserId, that.teachUserId);
+    }
 
-	public void setTabUserInfoByStudentUserId(TabUserInfo tabUserInfoByStudentUserId) {
-		this.tabUserInfoByStudentUserId = tabUserInfoByStudentUserId;
-	}
-
-	public Integer getCourseId() {
-		return this.courseId;
-	}
-
-	public void setCourseId(Integer courseId) {
-		this.courseId = courseId;
-	}
-
-	public String getNote() {
-		return this.note;
-	}
-
-	public void setNote(String note) {
-		this.note = note;
-	}
-
-	public String getPublishTime() {
-		return this.publishTime;
-	}
-
-	public void setPublishTime(String publishTime) {
-		this.publishTime = publishTime;
-	}
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, studentUserId, courseId, note, publishTime, teachUserId);
+    }
 }

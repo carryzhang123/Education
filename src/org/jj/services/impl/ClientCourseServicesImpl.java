@@ -1,9 +1,6 @@
 package org.jj.services.impl;
 
-import java.util.List;
-
 import org.jj.dao.TabCourseDAO;
-import org.jj.model.TabCourse;
 import org.jj.services.ClientCourseServices;
 
 public class ClientCourseServicesImpl implements ClientCourseServices {

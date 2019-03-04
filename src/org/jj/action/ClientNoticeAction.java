@@ -37,7 +37,7 @@ public class ClientNoticeAction extends BaseAction{
 			responseInfo("用户未登录");
 			return;
 		}
-		if(user.getTabRole().getId()!=1){
+		if(user.getUserRole()!=1){
 			responseInfo("用户权限不足");
 			return;
 		}
@@ -48,7 +48,7 @@ public class ClientNoticeAction extends BaseAction{
 			TabNotice tn=new TabNotice();
 			tn.setInfo(info);
 			tn.setPublishTime(Time.getNowTime());
-			tn.setPublicUser(((TabUserInfo)session.get(ClientUserAction.USER_INFO)).getId());
+			tn.setPublishUser(((TabUserInfo)session.get(ClientUserAction.USER_INFO)).getId());
 			tn.setTitle(title);
 			noticeServices.save(tn);
 			responseInfo("添加成功");
@@ -93,7 +93,6 @@ public class ClientNoticeAction extends BaseAction{
 			notice.setTitle("当前文章不存在");
 			notice.setInfo("未找到当前文章");
 			notice.setPublishTime(Time.getNowTime());
-			notice.setUser(new TabUserInfo().setUserName("系统提示"));
 		}else{
 			notice=noticeServices.show(id);
 		}

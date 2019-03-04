@@ -1,96 +1,97 @@
 package org.jj.model;
 
+import javax.persistence.*;
+import java.util.Objects;
+
 /**
- * TabComment entity. @author MyEclipse Persistence Tools
- */
+ * @author ZhangHang
+ * @create 2018-12-26 10:55
+ **/
+@Entity
+@Table(name = "tab_comment", schema = "education", catalog = "")
+public class TabComment {
+    private int id;
+    private String comment;
+    private String publishTime;
+    private int publishUser;
+    private Integer replyUser;
+    private int isDel;
 
-public class TabComment implements java.io.Serializable {
+    @Id
+    @Column(name = "id")
+    public int getId() {
+        return id;
+    }
 
-	// Fields
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -7337746868438157534L;
-	private Integer id;
-	private TabUserInfo tabUserInfoByReplyUser;
-	private TabUserInfo tabUserInfoByPublishUser;
-	private String comment;
-	private String publishTime;
-	private Integer isDel;
+    @Basic
+    @Column(name = "comment")
+    public String getComment() {
+        return comment;
+    }
 
-	// Constructors
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 
-	/** default constructor */
-	public TabComment() {
-	}
+    @Basic
+    @Column(name = "publish_time")
+    public String getPublishTime() {
+        return publishTime;
+    }
 
-	/** minimal constructor */
-	public TabComment(TabUserInfo tabUserInfoByPublishUser, String comment, String publishTime, Integer isDel) {
-		this.tabUserInfoByPublishUser = tabUserInfoByPublishUser;
-		this.comment = comment;
-		this.publishTime = publishTime;
-		this.isDel = isDel;
-	}
+    public void setPublishTime(String publishTime) {
+        this.publishTime = publishTime;
+    }
 
-	/** full constructor */
-	public TabComment(TabUserInfo tabUserInfoByReplyUser, TabUserInfo tabUserInfoByPublishUser, String comment,
-			String publishTime, Integer isDel) {
-		this.tabUserInfoByReplyUser = tabUserInfoByReplyUser;
-		this.tabUserInfoByPublishUser = tabUserInfoByPublishUser;
-		this.comment = comment;
-		this.publishTime = publishTime;
-		this.isDel = isDel;
-	}
+    @Basic
+    @Column(name = "publish_user")
+    public int getPublishUser() {
+        return publishUser;
+    }
 
-	// Property accessors
+    public void setPublishUser(int publishUser) {
+        this.publishUser = publishUser;
+    }
 
-	public Integer getId() {
-		return this.id;
-	}
+    @Basic
+    @Column(name = "reply_user")
+    public Integer getReplyUser() {
+        return replyUser;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public void setReplyUser(Integer replyUser) {
+        this.replyUser = replyUser;
+    }
 
-	public TabUserInfo getTabUserInfoByReplyUser() {
-		return this.tabUserInfoByReplyUser;
-	}
+    @Basic
+    @Column(name = "is_del")
+    public int getIsDel() {
+        return isDel;
+    }
 
-	public void setTabUserInfoByReplyUser(TabUserInfo tabUserInfoByReplyUser) {
-		this.tabUserInfoByReplyUser = tabUserInfoByReplyUser;
-	}
+    public void setIsDel(int isDel) {
+        this.isDel = isDel;
+    }
 
-	public TabUserInfo getTabUserInfoByPublishUser() {
-		return this.tabUserInfoByPublishUser;
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TabComment that = (TabComment) o;
+        return id == that.id &&
+                publishUser == that.publishUser &&
+                isDel == that.isDel &&
+                Objects.equals(comment, that.comment) &&
+                Objects.equals(publishTime, that.publishTime) &&
+                Objects.equals(replyUser, that.replyUser);
+    }
 
-	public void setTabUserInfoByPublishUser(TabUserInfo tabUserInfoByPublishUser) {
-		this.tabUserInfoByPublishUser = tabUserInfoByPublishUser;
-	}
-
-	public String getComment() {
-		return this.comment;
-	}
-
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
-
-	public String getPublishTime() {
-		return this.publishTime;
-	}
-
-	public void setPublishTime(String publishTime) {
-		this.publishTime = publishTime;
-	}
-
-	public Integer getIsDel() {
-		return this.isDel;
-	}
-
-	public void setIsDel(Integer isDel) {
-		this.isDel = isDel;
-	}
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, comment, publishTime, publishUser, replyUser, isDel);
+    }
 }

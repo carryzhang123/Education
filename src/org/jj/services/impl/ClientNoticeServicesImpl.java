@@ -38,10 +38,9 @@ public class ClientNoticeServicesImpl implements ClientNoticeServices{
 	}
 
 
-
+	@Override
 	public TabNotice show(Integer id) {
 		TabNotice tn=noticeDAO.findById(id);
-		tn.setUser(userInfoDAO.findById(tn.getPublicUser()));
 		return tn;
 	}
 

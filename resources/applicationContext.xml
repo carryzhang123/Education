@@ -61,11 +61,6 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-	<bean id="TabChinaCitysDAO" class="org.jj.dao.TabChinaCitysDAO">
-		<property name="sessionFactory">
-			<ref bean="sessionFactory" />
-		</property>
-	</bean>
 	<bean id="TabCourseDAO" class="org.jj.dao.TabCourseDAO">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
@@ -82,7 +77,6 @@
 		</property>
 	</bean>
 	<bean id="userInfoServices" class="org.jj.services.impl.UserInfoServicesImpl">
-		<property name="chinaCitysDAO" ref="TabChinaCitysDAO"></property>
 		<property name="roleDAO" ref="TabRoleDAO"></property>
 		<property name="userInfoDAO" ref="TabUserInfoDAO"></property>
 	</bean>

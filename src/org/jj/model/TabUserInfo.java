@@ -1,242 +1,180 @@
 package org.jj.model;
 
-import java.util.HashSet;
-import java.util.Set;
+import javax.persistence.*;
+import java.util.Objects;
 
 /**
- * TabUserInfo entity. @author MyEclipse Persistence Tools
- */
+ * @author ZhangHang
+ * @create 2018-12-26 10:55
+ **/
+@Entity
+@Table(name = "tab_user_info", schema = "education", catalog = "")
+public class TabUserInfo {
+    private int id;
+    private String userId;
+    private String userPassword;
+    private String userName;
+    private String userSex;
+    private String userAge;
+    private Integer userRole;
+    private String userResumeFile;
+    private Integer userIsExamine;
+    private Integer userResumeIsShow;
+    private String loginResult;
+    private Boolean loginState;
+    private String role;
 
-@SuppressWarnings("rawtypes")
-public class TabUserInfo implements java.io.Serializable {
+    @Id
+    @Column(name = "id")
+    public int getId() {
+        return id;
+    }
 
-	// Fields
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -7419405802062774925L;
-	private Integer id;
-	private TabChinaCitys tabChinaCitys;
-	private TabRole tabRole;
-	private String userId;
-	private String userPassword;
-	private String userName;
-	private String userSex;
-	private String userAge;
-	private String userAddress;
-	private String userResumeFile;
-	private Integer userIsExamine;
-	private Integer userResumeIsShow;
-	private Set tabCommentsForPublishUser = new HashSet(0);
-	private Set tabCommentsForReplyUser = new HashSet(0);
-	private Set tabStuStudyCoursesForStudentUserId = new HashSet(0);
-	private Set tabNotices = new HashSet(0);
-	private Set tabCourses = new HashSet(0);
-	private Set tabStuStudyCoursesForTeachUserId = new HashSet(0);
+    @Basic
+    @Column(name = "user_id")
+    public String getUserId() {
+        return userId;
+    }
 
-	// Constructors
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
-	/** default constructor */
-	public TabUserInfo() {
-	}
+    @Basic
+    @Column(name = "user_password")
+    public String getUserPassword() {
+        return userPassword;
+    }
 
-	/** minimal constructor */
-	public TabUserInfo(TabRole tabRole, String userId, String userPassword) {
-		this.tabRole = tabRole;
-		this.userId = userId;
-		this.userPassword = userPassword;
-	}
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
+    }
 
-	/** full constructor */
-	public TabUserInfo(TabChinaCitys tabChinaCitys, TabRole tabRole, String userId, String userPassword,
-			String userName, String userSex, String userAge, String userAddress, String userResumeFile,
-			Integer userIsExamine, Integer userResumeIsShow, Set tabCommentsForPublishUser, Set tabCommentsForReplyUser,
-			Set tabStuStudyCoursesForStudentUserId, Set tabNotices, Set tabCourses,
-			Set tabStuStudyCoursesForTeachUserId) {
-		this.tabChinaCitys = tabChinaCitys;
-		this.tabRole = tabRole;
-		this.userId = userId;
-		this.userPassword = userPassword;
-		this.userName = userName;
-		this.userSex = userSex;
-		this.userAge = userAge;
-		this.userAddress = userAddress;
-		this.userResumeFile = userResumeFile;
-		this.userIsExamine = userIsExamine;
-		this.userResumeIsShow = userResumeIsShow;
-		this.tabCommentsForPublishUser = tabCommentsForPublishUser;
-		this.tabCommentsForReplyUser = tabCommentsForReplyUser;
-		this.tabStuStudyCoursesForStudentUserId = tabStuStudyCoursesForStudentUserId;
-		this.tabNotices = tabNotices;
-		this.tabCourses = tabCourses;
-		this.tabStuStudyCoursesForTeachUserId = tabStuStudyCoursesForTeachUserId;
-	}
+    @Basic
+    @Column(name = "user_name")
+    public String getUserName() {
+        return userName;
+    }
 
-	// Property accessors
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
-	public Integer getId() {
-		return this.id;
-	}
+    @Basic
+    @Column(name = "user_sex")
+    public String getUserSex() {
+        return userSex;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public void setUserSex(String userSex) {
+        this.userSex = userSex;
+    }
 
-	public TabChinaCitys getTabChinaCitys() {
-		return this.tabChinaCitys;
-	}
+    @Basic
+    @Column(name = "user_age")
+    public String getUserAge() {
+        return userAge;
+    }
 
-	public void setTabChinaCitys(TabChinaCitys tabChinaCitys) {
-		this.tabChinaCitys = tabChinaCitys;
-	}
+    public void setUserAge(String userAge) {
+        this.userAge = userAge;
+    }
 
-	public TabRole getTabRole() {
-		return this.tabRole;
-	}
+    @Basic
+    @Column(name = "user_role")
+    public int getUserRole() {
+        return userRole;
+    }
 
-	public void setTabRole(TabRole tabRole) {
-		this.tabRole = tabRole;
-	}
+    public void setUserRole(int userRole) {
+        this.userRole = userRole;
+    }
 
-	public String getUserId() {
-		return this.userId;
-	}
+    @Basic
+    @Column(name = "user_resume_file")
+    public String getUserResumeFile() {
+        return userResumeFile;
+    }
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
+    public void setUserResumeFile(String userResumeFile) {
+        this.userResumeFile = userResumeFile;
+    }
 
-	public String getUserPassword() {
-		return this.userPassword;
-	}
+    @Basic
+    @Column(name = "user_is_examine")
+    public Integer getUserIsExamine() {
+        return userIsExamine;
+    }
 
-	public void setUserPassword(String userPassword) {
-		this.userPassword = userPassword;
-	}
+    public void setUserIsExamine(Integer userIsExamine) {
+        this.userIsExamine = userIsExamine;
+    }
 
-	public String getUserName() {
-		return this.userName;
-	}
+    @Basic
+    @Column(name = "user_resume_is_show")
+    public Integer getUserResumeIsShow() {
+        return userResumeIsShow;
+    }
 
-	public TabUserInfo setUserName(String userName) {
-		this.userName = userName;
-		return this;
-	}
+    public void setUserResumeIsShow(Integer userResumeIsShow) {
+        this.userResumeIsShow = userResumeIsShow;
+    }
 
-	public String getUserSex() {
-		return this.userSex;
-	}
+    public String getLoginResult() {
+        return loginResult;
+    }
 
-	public void setUserSex(String userSex) {
-		this.userSex = userSex;
-	}
+    public void setLoginResult(String loginResult) {
+        this.loginResult = loginResult;
+    }
 
-	public String getUserAge() {
-		return this.userAge;
-	}
+    public Boolean getLoginState() {
+        return loginState;
+    }
 
-	public void setUserAge(String userAge) {
-		this.userAge = userAge;
-	}
+    public void setLoginState(Boolean loginState) {
+        this.loginState = loginState;
+    }
 
-	public String getUserAddress() {
-		return this.userAddress;
-	}
+    public void setUserRole(Integer userRole) {
+        this.userRole = userRole;
+    }
 
-	public void setUserAddress(String userAddress) {
-		this.userAddress = userAddress;
-	}
+    public String getRole() {
+        return role;
+    }
 
-	public String getUserResumeFile() {
-		return this.userResumeFile;
-	}
+    public void setRole(String role) {
+        this.role = role;
+    }
 
-	public void setUserResumeFile(String userResumeFile) {
-		this.userResumeFile = userResumeFile;
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        TabUserInfo that = (TabUserInfo) o;
+        return id == that.id &&
+                userRole == that.userRole &&
+                Objects.equals(userId, that.userId) &&
+                Objects.equals(userPassword, that.userPassword) &&
+                Objects.equals(userName, that.userName) &&
+                Objects.equals(userSex, that.userSex) &&
+                Objects.equals(userAge, that.userAge) &&
+                Objects.equals(userResumeFile, that.userResumeFile) &&
+                Objects.equals(userIsExamine, that.userIsExamine) &&
+                Objects.equals(userResumeIsShow, that.userResumeIsShow);
+    }
 
-	public Integer getUserIsExamine() {
-		return this.userIsExamine;
-	}
-
-	public void setUserIsExamine(Integer userIsExamine) {
-		this.userIsExamine = userIsExamine;
-	}
-
-	public Integer getUserResumeIsShow() {
-		return this.userResumeIsShow;
-	}
-
-	public void setUserResumeIsShow(Integer userResumeIsShow) {
-		this.userResumeIsShow = userResumeIsShow;
-	}
-
-	public Set getTabCommentsForPublishUser() {
-		return this.tabCommentsForPublishUser;
-	}
-
-	public void setTabCommentsForPublishUser(Set tabCommentsForPublishUser) {
-		this.tabCommentsForPublishUser = tabCommentsForPublishUser;
-	}
-
-	public Set getTabCommentsForReplyUser() {
-		return this.tabCommentsForReplyUser;
-	}
-
-	public void setTabCommentsForReplyUser(Set tabCommentsForReplyUser) {
-		this.tabCommentsForReplyUser = tabCommentsForReplyUser;
-	}
-
-	public Set getTabStuStudyCoursesForStudentUserId() {
-		return this.tabStuStudyCoursesForStudentUserId;
-	}
-
-	public void setTabStuStudyCoursesForStudentUserId(Set tabStuStudyCoursesForStudentUserId) {
-		this.tabStuStudyCoursesForStudentUserId = tabStuStudyCoursesForStudentUserId;
-	}
-
-	public Set getTabNotices() {
-		return this.tabNotices;
-	}
-
-	public void setTabNotices(Set tabNotices) {
-		this.tabNotices = tabNotices;
-	}
-
-	public Set getTabCourses() {
-		return this.tabCourses;
-	}
-
-	public void setTabCourses(Set tabCourses) {
-		this.tabCourses = tabCourses;
-	}
-
-	public Set getTabStuStudyCoursesForTeachUserId() {
-		return this.tabStuStudyCoursesForTeachUserId;
-	}
-
-	public void setTabStuStudyCoursesForTeachUserId(Set tabStuStudyCoursesForTeachUserId) {
-		this.tabStuStudyCoursesForTeachUserId = tabStuStudyCoursesForTeachUserId;
-	}
-
-	Boolean login_state=false;
-	String login_result="";
-
-	public Boolean isLogin() {
-		return login_state;
-	}
-
-	public void setLogin_state(Boolean login_state) {
-		this.login_state = login_state;
-	}
-
-	public String getLogin_result() {
-		return login_result;
-	}
-
-	public void setLogin_result(String login_result) {
-		this.login_result = login_result;
-	}
-	
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, userId, userPassword, userName, userSex, userAge, userRole, userResumeFile, userIsExamine, userResumeIsShow);
+    }
 }

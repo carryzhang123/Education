@@ -21,6 +21,7 @@ public class ClientCommentSerivcesImpl implements ClientCommentSerivces {
 	}
 
 
+	@Override
 	@SuppressWarnings("unchecked")
 	public List<TabComment> list() {
 		return commentDAO.findAll();

@@ -2,10 +2,8 @@ package org.jj.services.impl;
 
 import java.util.List;
 
-import org.jj.dao.TabChinaCitysDAO;
 import org.jj.dao.TabRoleDAO;
 import org.jj.dao.TabUserInfoDAO;
-import org.jj.model.TabChinaCitys;
 import org.jj.model.TabRole;
 import org.jj.model.TabUserInfo;
 import org.jj.services.UserInfoServices;
@@ -18,10 +16,10 @@ public class UserInfoServicesImpl implements UserInfoServices{
 	
 	private TabUserInfoDAO userInfoDAO;
 	
-	private TabChinaCitysDAO chinaCitysDAO; 
-	
+
 	private TabRoleDAO roleDAO;
-	
+
+	@Override
 	public Integer register(String user_id, String user_password, String user_name, String user_sex, String user_age,
 			String user_address, Integer user_address_city, Integer user_role) {
 		Integer result=1;
@@ -34,29 +32,37 @@ public class UserInfoServicesImpl implements UserInfoServices{
 		userInfo.setUserPassword(Password.encrypt(user_password));
 		userInfo.setUserSex(user_sex);
 		userInfo.setUserAge(user_age);
-		userInfo.setUserAddress(user_address);
-		//获取城市
-		TabChinaCitys city=chinaCitysDAO.findById(user_address_city);
-		userInfo.setTabChinaCitys(city);
 		TabRole role=roleDAO.findById(user_role);
-		if(role==null)return 0;
-		userInfo.setTabRole(role);
+		if(role==null) {
+			return 0;
+		}
+		userInfo.setUserRole(role.getId());
 		userInfoDAO.save(userInfo);
 		return result;
 	}
 	
 	private int checkRegister(String user_id, String user_password, String user_name, String user_sex, String user_age,
 			String user_address, Integer user_address_city, Integer user_role) {
-		if(user_id==null)return 0;
-		if(user_password==null)return 0;
-		if(user_name==null)return 0;
+		if(user_id==null) {
+			return 0;
+		}
+		if(user_password==null) {
+			return 0;
+		}
+		if(user_name==null) {
+			return 0;
+		}
 		try {
 			Integer.valueOf(user_age);
 		} catch (Exception e) {
 			return 0;
 		}
-		if(user_role==0)return 3;
-		if(userInfoDAO.countByUserId(user_id)>0)return 2;
+		if(user_role==0) {
+			return 3;
+		}
+		if(userInfoDAO.countByUserId(user_id)>0) {
+			return 2;
+		}
 		return 1;
 	}
 
@@ -67,14 +73,14 @@ public class UserInfoServicesImpl implements UserInfoServices{
 		TabUserInfo userInfo=(TabUserInfo) (userInfoList!=null&&userInfoList.size()==1?userInfoList.get(0):null);
 		if(userInfo==null){
 			userInfo=new TabUserInfo();
-			userInfo.setLogin_state(false);
-			userInfo.setLogin_result("未找到当前用户");
+			userInfo.setLoginState(false);
+			userInfo.setLoginResult("未找到当前用户");
 		}else if(userInfo.getUserPassword().equals(user_password)){
-			userInfo.setLogin_state(true);
+			userInfo.setLoginState(true);
 		}else{
 			userInfo=new TabUserInfo();
-			userInfo.setLogin_state(false);
-			userInfo.setLogin_result("用户名/密码有误");
+			userInfo.setLoginState(false);
+			userInfo.setLoginResult("用户名/密码有误");
 		}
 		return userInfo;
 	}
@@ -92,12 +98,6 @@ public class UserInfoServicesImpl implements UserInfoServices{
 		oldUserInfo.setUserName(user_name!=null?user_name:oldUserInfo.getUserName());
 		oldUserInfo.setUserSex(user_sex!=null?user_sex:oldUserInfo.getUserSex());
 		oldUserInfo.setUserAge(user_age!=null?user_age:oldUserInfo.getUserAge());
-		oldUserInfo.setUserAddress(user_address!=null?user_address:oldUserInfo.getUserAddress());
-		if(user_address_city!=null){
-			//获取城市
-			TabChinaCitys city=chinaCitysDAO.findById(user_address_city);
-			oldUserInfo.setTabChinaCitys(city);
-		}
 		userInfoDAO.merge(oldUserInfo);
 		return 1;
 	}
@@ -108,14 +108,6 @@ public class UserInfoServicesImpl implements UserInfoServices{
 
 	public void setUserInfoDAO(TabUserInfoDAO userInfoDAO) {
 		this.userInfoDAO = userInfoDAO;
-	}
-
-	public TabChinaCitysDAO getChinaCitysDAO() {
-		return chinaCitysDAO;
-	}
-
-	public void setChinaCitysDAO(TabChinaCitysDAO chinaCitysDAO) {
-		this.chinaCitysDAO = chinaCitysDAO;
 	}
 
 	public TabRoleDAO getRoleDAO() {

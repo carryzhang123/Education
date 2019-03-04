@@ -1,13 +1,8 @@
 package org.jj.action;
 
-import java.util.List;
-
-import org.jj.model.TabCourse;
 import org.jj.services.ClientCourseServices;
 import org.jj.utils.BaseAction;
 import org.jj.utils.Time;
-
-import com.alibaba.fastjson.JSONObject;
 
 /**
  * 课程信息管理

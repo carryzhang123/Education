@@ -2,10 +2,9 @@ package org.jj.services;
 
 import java.util.List;
 
+import com.li.utils.bootstrapTable.PageModel;
 import org.jj.model.TabRole;
 import org.jj.model.TabUserInfo;
-
-import com.li.utils.bootstrapTable.PageModel;
 
 /**
  * �û���Ϣservices
@@ -31,7 +30,7 @@ public interface UserInfoServices {
 	public TabUserInfo checkLogin(String user_id, String user_password);
 
 	public Integer update(TabUserInfo oldUserInfo, String user_id, String user_password, String user_name, String user_sex,
-			String user_age, String user_address, Integer user_address_city);
+						  String user_age, String user_address, Integer user_address_city);
 
 	public List<TabRole> role_list();
 

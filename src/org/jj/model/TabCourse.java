@@ -1,67 +1,73 @@
 package org.jj.model;
 
+import javax.persistence.*;
+import java.util.Objects;
+
 /**
- * TabCourse entity. @author MyEclipse Persistence Tools
- */
+ * @author ZhangHang
+ * @create 2018-12-26 10:55
+ **/
+@Entity
+@Table(name = "tab_course", schema = "education", catalog = "")
+public class TabCourse {
+    private int id;
+    private String course;
+    private String addTime;
+    private int addUser;
 
-public class TabCourse implements java.io.Serializable {
+    @Id
+    @Column(name = "id")
+    public int getId() {
+        return id;
+    }
 
-	// Fields
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -8502267323476857413L;
-	private Integer id;
-	private TabUserInfo tabUserInfo;
-	private String course;
-	private String addTime;
+    @Basic
+    @Column(name = "course")
+    public String getCourse() {
+        return course;
+    }
 
-	// Constructors
+    public void setCourse(String course) {
+        this.course = course;
+    }
 
-	/** default constructor */
-	public TabCourse() {
-	}
+    @Basic
+    @Column(name = "add_time")
+    public String getAddTime() {
+        return addTime;
+    }
 
-	/** full constructor */
-	public TabCourse(TabUserInfo tabUserInfo, String course, String addTime) {
-		this.tabUserInfo = tabUserInfo;
-		this.course = course;
-		this.addTime = addTime;
-	}
+    public void setAddTime(String addTime) {
+        this.addTime = addTime;
+    }
 
-	// Property accessors
+    @Basic
+    @Column(name = "add_user")
+    public int getAddUser() {
+        return addUser;
+    }
 
-	public Integer getId() {
-		return this.id;
-	}
+    public void setAddUser(int addUser) {
+        this.addUser = addUser;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TabCourse that = (TabCourse) o;
+        return id == that.id &&
+                addUser == that.addUser &&
+                Objects.equals(course, that.course) &&
+                Objects.equals(addTime, that.addTime);
+    }
 
-	public TabUserInfo getTabUserInfo() {
-		return this.tabUserInfo;
-	}
-
-	public void setTabUserInfo(TabUserInfo tabUserInfo) {
-		this.tabUserInfo = tabUserInfo;
-	}
-
-	public String getCourse() {
-		return this.course;
-	}
-
-	public void setCourse(String course) {
-		this.course = course;
-	}
-
-	public String getAddTime() {
-		return this.addTime;
-	}
-
-	public void setAddTime(String addTime) {
-		this.addTime = addTime;
-	}
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, course, addTime, addUser);
+    }
 }

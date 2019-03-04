@@ -20,7 +20,6 @@ import org.springframework.context.ApplicationContext;
  * transactions. Each of these methods provides additional information for how
  * to configure it for the desired type of transaction control.
  * 
- * @see org.jj.dao.TabStuStudyCourse
  * @author MyEclipse Persistence Tools
  */
 @SuppressWarnings("rawtypes")

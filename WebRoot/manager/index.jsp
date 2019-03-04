@@ -11,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <style type="text/css">
     .layui-nav-item{text-align: center;}
     .nav-item-title,.nav-item-title:hover{text-align: left;background:#393D49;}
-    </style>
+    </style> 管理
   </head>
   <body>
   	<ul class="fly-panel-main fly-list-static layui-nav layui-nav-tree  layui-col-md2" lay-filter="menu" style="margin-right: 10px;">

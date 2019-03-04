@@ -13,6 +13,7 @@
 	<package name="sys" extends="struts-default" namespace="/sys">
 		<action name="login" class="org.jj.action.ClientUserAction"  method="signIn">
 			<result name="signIn">/client/login.jsp</result>
+			<result name="sign">/client/login2.jsp</result>
 		</action>
 	</package>
 	<package name="course" extends="struts-default" namespace="/course">
@@ -22,9 +23,13 @@
 	</package> 
 	
 	<package name="user" extends="struts-default" namespace="/client">
-		<action name="sign*" class="org.jj.action.ClientUserAction"  method="sign{1}">
+		<action name="sign*" class="org.jj.action.ClientUserAction"  method="signIn">
 			<result name="signIn">/client/login.jsp</result>
+			<result name="sign">/client/login.jsp</result>
 			<result name="signUp">/client/register.jsp</result>
+			<result name="success">/course/index.jsp</result>
+			<result name="login" type="redirectAction">index</result>
+			<result name="noLogin" type="chain">signIn</result>
 		</action>
 		
 		<action name="index" class="org.jj.action.ClientIndexAction" method="index">
